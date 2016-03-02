@@ -19,13 +19,13 @@ module.exports = {
     src: src + "/scss/**/*.scss",
     dest: dest + "/css"
   },
-  tpl: {
-    src: src + "/html/tpl/*.html",
-    dest: dest + "/tpl"
-  },
   script: {
     src: src + "/js/**/*",
     dest: dest + "/js"
+  },
+  tpl: {
+    src: src + "/html/tpl/*.html",
+    dest: dest + "/tpl"
   },
   lib: {
     src: src + "/lib/**/*",
@@ -45,9 +45,9 @@ module.exports = {
         entries: src + '/react/helloworld.jsx',
         dest: dest,
         outputName: 'js/helloworld.bundle.js',
-        literal: {
-          react: 'window.react'
-        },
+        // literal: {
+        //   react: 'window.react'
+        // },
         extensions: ['.js', '.jsx']
       }
     ]

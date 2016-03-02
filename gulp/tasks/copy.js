@@ -3,68 +3,37 @@
 var config      = require('../config');
 
 var gulp        = require('gulp');
+var gulpif = require('gulp-if');
 var gulpSequence        = require('gulp-sequence');
+var watch = require('gulp-watch');
 
 
 gulp.task('cp:views', function () {
-  // return gulp
-  //   .src(config.views.dist)
-  //   .pipe(gulp.dest(config.views.public));
-  if (global.gulpOptions.bs) {
-    return gulp
-      .src(config.views.dist)
-      .pipe(gulp.dest(config.views.public))
-      .pipe(global.gulpOptions.bs.reload({ stream: true }));
-  } else {
-    return gulp
-      .src(config.views.dist)
-      .pipe(gulp.dest(config.views.public));
-  }
+  return gulp.src(config.views.dist)
+    .pipe(gulpif(global.gulpOptions.watch, watch(config.views.dist, {name: 'cp:views', verbose: true})))
+    .pipe(gulp.dest(config.views.public))
+    .pipe(gulpif(global.gulpOptions.bs, global.gulpOptions.bs.reload({ stream: true })));
 });
 
 gulp.task('cp:css', function () {
-  if (global.gulpOptions.bs) {
-    return gulp
-      .src(config.css.dist)
-      .pipe(gulp.dest(config.css.public))
-      .pipe(global.gulpOptions.bs.reload({ stream: true }));
-  } else {
-    return gulp
-      .src(config.css.dist)
-      .pipe(gulp.dest(config.css.public));
-  }
+  return gulp.src(config.css.dist)
+    .pipe(gulpif(global.gulpOptions.watch, watch(config.css.dist, {name: 'cp:css', verbose: true})))
+    .pipe(gulp.dest(config.css.public))
+    .pipe(gulpif(global.gulpOptions.bs, global.gulpOptions.bs.reload({ stream: true })));
 });
 
 gulp.task('cp:script', function () {
-  // return gulp
-  //   .src(config.script.dist)
-  //   .pipe(gulp.dest(config.script.public));
-  if (global.gulpOptions.bs) {
-    return gulp
-      .src(config.script.dist)
-      .pipe(gulp.dest(config.script.public))
-      .pipe(global.gulpOptions.bs.reload({ stream: true }));
-  } else {
-    return gulp
-      .src(config.script.dist)
-      .pipe(gulp.dest(config.script.public));
-  }
+  return gulp.src(config.script.dist)
+    .pipe(gulpif(global.gulpOptions.watch, watch(config.script.dist, {name: 'cp:script', verbose: true})))
+    .pipe(gulp.dest(config.script.public))
+    .pipe(gulpif(global.gulpOptions.bs, global.gulpOptions.bs.reload({ stream: true })));
 });
 
 gulp.task('cp:tpl', function () {
-  // return gulp
-  //   .src(config.tpl.dist)
-  //   .pipe(gulp.dest(config.tpl.public));
-  if (global.gulpOptions.bs) {
-    return gulp
-      .src(config.tpl.dist)
-      .pipe(gulp.dest(config.tpl.public))
-      .pipe(global.gulpOptions.bs.reload({ stream: true }));
-  } else {
-    return gulp
-      .src(config.tpl.dist)
-      .pipe(gulp.dest(config.tpl.public));
-  }
+  return gulp.src(config.tpl.dist)
+    .pipe(gulpif(global.gulpOptions.watch, watch(config.tpl.dist, {name: 'cp:tpl', verbose: true})))
+    .pipe(gulp.dest(config.tpl.public))
+    .pipe(gulpif(global.gulpOptions.bs, global.gulpOptions.bs.reload({ stream: true })));
 });
 
 gulp.task('cp:images', function () {

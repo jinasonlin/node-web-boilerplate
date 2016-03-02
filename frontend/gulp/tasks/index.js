@@ -23,9 +23,7 @@ gulp.task(global.gulpOptions.prefix + 'build', gulpSequence([
   global.gulpOptions.prefix + 'media',
 ]));
 
-
-
-gulp.task('develop', [global.gulpOptions.prefix + 'watch'], function (cb) {
+gulp.task('nodemon', function (cb) {
   var started = false;
   nodemon(config)
     .on('start', function () {
@@ -39,3 +37,6 @@ gulp.task('develop', [global.gulpOptions.prefix + 'watch'], function (cb) {
     });
 });
 
+gulp.task('developPlus', gulpSequence(global.gulpOptions.prefix + 'watchPlus', 'nodemon'));
+
+gulp.task('develop', gulpSequence(global.gulpOptions.prefix + 'watch', 'nodemon'));
