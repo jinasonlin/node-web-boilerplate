@@ -2,16 +2,20 @@
 
 var config = require('../config').script;
 
-var gulp   = require('gulp');
-var gulpif = require('gulp-if');
+var gulp = require('gulp');
 var rename = require('gulp-rename');
+var watch = require('gulp-watch');
 
 gulp.task(global.gulpOptions.prefix + 'script', function () {
-  return gulp.src(config.src)
-    .pipe(gulpif(global.gulpOptions.watch, watch(config.src, {
+  var src = gulp.src(config.src);
+  if (global.gulpOptions.watch) {
+    src = src.pipe(watch(config.src, {
       name: global.gulpOptions.prefix + 'script',
       verbose: true
-    })))
-    .pipe(gulpif(global.gulpOptions.rename, rename({extname: '.min.js'})))
-    .pipe(gulp.dest(config.dest));
+    }));
+  }
+  if (global.gulpOptions.rename) {
+    src = src.pipe(rename({ extname: '.min.js' }));
+  }
+  return src.pipe(gulp.dest(config.dest));
 });

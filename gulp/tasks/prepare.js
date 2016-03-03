@@ -16,22 +16,13 @@ gulp.task('setOptions:prepareUgly', function (cb) {
 
 gulp.task('prepareLite', gulpSequence(global.gulpOptions.prefix + 'build', 'cp'));
 
-gulp.task('prepare', gulpSequence([
-  'setOptions:prepare',
-  global.gulpOptions.prefix + 'build'
-], 'cp'));
+gulp.task('prepare', gulpSequence('setOptions:prepare', global.gulpOptions.prefix + 'build', 'cp'));
 
-gulp.task('prepareLiteUgly', gulpSequence([
-  'setOptions:prepareUgly',
-  global.gulpOptions.prefix + 'build'
-], 'cp'));
+gulp.task('prepareLiteUgly', gulpSequence('setOptions:prepareUgly', global.gulpOptions.prefix + 'build', 'cp'));
 
-gulp.task('prepareUgly', gulpSequence([
-  'setOptions:prepare',
-  'setOptions:prepareUgly',
-  global.gulpOptions.prefix + 'build'
-], 'cp'));
-
+gulp.task('prepareUgly', gulpSequence(
+  'setOptions:prepare', 'setOptions:prepareUgly',
+  global.gulpOptions.prefix + 'build', 'cp'));
 
 // gulp.task('prepareLite', [global.gulpOptions.prefix + 'build'], 'cp');
 

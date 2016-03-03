@@ -1,17 +1,20 @@
 'use strict';
 
-var config      = require('../config').html;
+var config = require('../config').html;
 
-var gulp        = require('gulp');
-var gulpif = require('gulp-if');
+var gulp = require('gulp');
 var fileInclude = require('gulp-file-include');
+var watch = require('gulp-watch');
 
 gulp.task(global.gulpOptions.prefix + 'html', function () {
-  return gulp.src(config.src)
-    .pipe(gulpif(global.gulpOptions.watch, watch(config.src, {
+  var src = gulp.src(config.src);
+  if (global.gulpOptions.watch) {
+    src = src.pipe(watch(config.src, {
       name: global.gulpOptions.prefix + 'html',
       verbose: true
-    })))
+    }));
+  }
+  return src
     .pipe(fileInclude({
       prefix: '@@',
       basepath: '@file'

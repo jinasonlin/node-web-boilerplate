@@ -2,13 +2,16 @@
 
 var config = require('../config').tpl;
 
-var gulp   = require('gulp');
+var gulp = require('gulp');
+var watch = require('gulp-watch');
 
 gulp.task(global.gulpOptions.prefix + 'tpl', function () {
-  return gulp.src(config.src)
-    .pipe(gulpif(global.gulpOptions.watch, watch(config.src, {
+  var src = gulp.src(config.src);
+  if (global.gulpOptions.watch) {
+    src = src.pipe(watch(config.src, {
       name: global.gulpOptions.prefix + 'tpl',
       verbose: true
-    })))
-    .pipe(gulp.dest(config.dest));
+    }));
+  }
+  return src.pipe(gulp.dest(config.dest));
 });

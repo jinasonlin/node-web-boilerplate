@@ -45,3 +45,4 @@ public
 
 # ignore for front end
 frontend/dist
+frontend/src/lib
