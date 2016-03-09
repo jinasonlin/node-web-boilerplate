@@ -19,23 +19,23 @@ var port = 8081;
  */
 
 
-// Connect to mongodb
-var connect = function () {
-  var options = {server: {socketOptions: {keepAlive: 1}}, replset: {socketOptions: {keepAlive: 1}}, mongos: true};
-  mongoose.connect(config.db, options);
-};
-connect();
+// // Connect to mongodb
+// var connect = function () {
+//   var options = {server: {socketOptions: {keepAlive: 1}}, replset: {socketOptions: {keepAlive: 1}}, mongos: true};
+//   mongoose.connect(config.db, options);
+// };
+// connect();
 
-mongoose.connection.on('error', function () {
-  process.exit();
-});
-mongoose.connection.on('disconnected', connect);
+// mongoose.connection.on('error', function () {
+//   process.exit();
+// });
+// mongoose.connection.on('disconnected', connect);
 
 
-// Bootstrap models
-fs.readdirSync(__dirname + '/app/models').forEach(function (file) {
-  if (~file.indexOf('.js')) require(__dirname + '/app/models/' + file);
-});
+// // Bootstrap models
+// fs.readdirSync(__dirname + '/app/models').forEach(function (file) {
+//   if (~file.indexOf('.js')) require(__dirname + '/app/models/' + file);
+// });
 
 // Bootstrap extension
 require('./config/extension');
