@@ -19,6 +19,10 @@ var browserifyTask = function (callback, devMode) {
 
   var bundleQueue = config.bundleConfigs.length;
 
+  if (!bundleQueue) {
+    return callback();
+  }
+
   var browserifyThis = function (bundleConfig) {
 
     if (devMode) {
