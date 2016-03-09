@@ -13,5 +13,10 @@ gulp.task(global.gulpOptions.prefix + 'tpl', function () {
       verbose: true
     }));
   }
-  return src.pipe(gulp.dest(config.dest));
+  src = src.pipe(gulp.dest(config.dest));
+  if (global.gulpOptions.bsFront) {
+    // src = src.pipe(global.gulpOptions.bsFrontRload({ stream: true }));
+    src = src.pipe(global.gulpOptions.bsFront.reload({ stream: true }));
+  }
+  return src;
 });

@@ -17,5 +17,10 @@ gulp.task(global.gulpOptions.prefix + 'script', function () {
   if (global.gulpOptions.rename) {
     src = src.pipe(rename({ extname: '.min.js' }));
   }
-  return src.pipe(gulp.dest(config.dest));
+  src = src.pipe(gulp.dest(config.dest));
+  if (global.gulpOptions.bsFront) {
+    // src = src.pipe(global.gulpOptions.bsFrontRload({ stream: true }));
+    src = src.pipe(global.gulpOptions.bsFront.reload({ stream: true }));
+  }
+  return src;
 });

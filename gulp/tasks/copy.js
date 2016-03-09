@@ -12,7 +12,7 @@ gulp.task('cp:views', function () {
   if (global.gulpOptions.watch) {
     src = src.pipe(watch(config.views.dist, { name: 'cp:views', verbose: true }));
   }
-  src.pipe(gulp.dest(config.views.public));
+  src = src.pipe(gulp.dest(config.views.public));
   if (global.gulpOptions.bs) {
     // src = src.pipe(global.gulpOptions.bsReload({ stream: true }));
     src = src.pipe(global.gulpOptions.bs.reload({ stream: true }));
@@ -26,7 +26,7 @@ gulp.task('cp:css', function () {
   if (global.gulpOptions.watch) {
     src = src.pipe(watch(config.css.dist, { name: 'cp:css', verbose: true }));
   }
-  src.pipe(gulp.dest(config.css.public));
+  src = src.pipe(gulp.dest(config.css.public));
   if (global.gulpOptions.bs) {
     // src = src.pipe(global.gulpOptions.bsReload({ stream: true }));
     src = src.pipe(global.gulpOptions.bs.reload({ stream: true }));
@@ -40,7 +40,7 @@ gulp.task('cp:script', function () {
   if (global.gulpOptions.watch) {
     src = src.pipe(watch(config.script.dist, { name: 'cp:script', verbose: true }));
   }
-  src.pipe(gulp.dest(config.script.public));
+  src = src.pipe(gulp.dest(config.script.public));
   if (global.gulpOptions.bs) {
     // src = src.pipe(global.gulpOptions.bsReload({ stream: true }));
     src = src.pipe(global.gulpOptions.bs.reload({ stream: true }));
@@ -54,7 +54,7 @@ gulp.task('cp:tpl', function () {
   if (global.gulpOptions.watch) {
     src = src.pipe(watch(config.tpl.dist, { name: 'cp:tpl', verbose: true }));
   }
-  src.pipe(gulp.dest(config.tpl.public));
+  src = src.pipe(gulp.dest(config.tpl.public));
   if (global.gulpOptions.bs) {
     // src = src.pipe(global.gulpOptions.bsReload({ stream: true }));
     src = src.pipe(global.gulpOptions.bs.reload({ stream: true }));

@@ -14,7 +14,12 @@ gulp.task(global.gulpOptions.prefix + 'sass', function () {
       verbose: true
     }));
   }
-  return src
+  src = src
     .pipe(sass())
     .pipe(gulp.dest(config.dest));
+  if (global.gulpOptions.bsFront) {
+    // src = src.pipe(global.gulpOptions.bsFrontRload({ stream: true }));
+    src = src.pipe(global.gulpOptions.bsFront.reload({ stream: true }));
+  }
+  return src;
 });

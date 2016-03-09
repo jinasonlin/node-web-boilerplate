@@ -5,8 +5,9 @@ var config = require('../config').nodemon;
 var gulp         = require('gulp');
 var gulpSequence = require('gulp-sequence');
 var nodemon = require('gulp-nodemon');
+var browserSync = require('browser-sync').create();
 
-gulp.task('default', function (cb) {
+gulp.task(global.gulpOptions.prefix + 'default', function (cb) {
   console.log('check gulp task. such as "gulp develop"');
   cb();
 });
@@ -23,7 +24,7 @@ gulp.task(global.gulpOptions.prefix + 'build', gulpSequence([
   global.gulpOptions.prefix + 'media',
 ]));
 
-gulp.task('nodemon', function (cb) {
+gulp.task(global.gulpOptions.prefix + 'nodemon', function (cb) {
   var started = false;
   nodemon(config)
     .on('start', function () {
@@ -37,6 +38,24 @@ gulp.task('nodemon', function (cb) {
     });
 });
 
-gulp.task('developPlus', gulpSequence(global.gulpOptions.prefix + 'watchPlus', 'nodemon'));
+gulp.task(global.gulpOptions.prefix + 'browser-sync', function() {
+  global.gulpOptions.watch = true;
+  global.gulpOptions.bsFront = browserSync;
+  global.gulpOptions.bsFrontRload = browserSync.reload;
+  browserSync.init({
+    open: false,
+    proxy: 'http://localhost:8082'
+  });
+});
 
-gulp.task('develop', gulpSequence(global.gulpOptions.prefix + 'watch', 'nodemon'));
+gulp.task(global.gulpOptions.prefix + 'develop',
+  gulpSequence(global.gulpOptions.prefix + 'watch', global.gulpOptions.prefix + 'nodemon'));
+
+gulp.task(global.gulpOptions.prefix + 'developP',
+  gulpSequence(global.gulpOptions.prefix + 'watchPlus', global.gulpOptions.prefix + 'nodemon'));
+
+gulp.task(global.gulpOptions.prefix + 'developS',
+  gulpSequence(
+    global.gulpOptions.prefix + 'watch',
+    global.gulpOptions.prefix + 'nodemon',
+    global.gulpOptions.prefix + 'browser-sync'));

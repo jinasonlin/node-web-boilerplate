@@ -14,10 +14,15 @@ gulp.task(global.gulpOptions.prefix + 'html', function () {
       verbose: true
     }));
   }
-  return src
+  src = src
     .pipe(fileInclude({
       prefix: '@@',
       basepath: '@file'
     }))
     .pipe(gulp.dest(config.dest));
+  if (global.gulpOptions.bsFront) {
+    // src = src.pipe(global.gulpOptions.bsFrontRload({ stream: true }));
+    src = src.pipe(global.gulpOptions.bsFront.reload({ stream: true }));
+  }
+  return src;
 });

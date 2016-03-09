@@ -12,7 +12,6 @@ gulp.task('default', function (cb) {
 
 // developFullStackSyncPlus
 gulp.task('developFSSP', ['browser-sync', global.gulpOptions.prefix + 'watchPlus'], function () {
-  global.gulpOptions.watch = true;
   gulp.watch([config.css.dist], ['cp:css']);
   gulp.watch([config.script.dist], ['cp:script']);
   gulp.watch([config.tpl.dist,], ['cp:tpl']);
@@ -21,7 +20,6 @@ gulp.task('developFSSP', ['browser-sync', global.gulpOptions.prefix + 'watchPlus
 
 // developFullStackSync
 gulp.task('developFSS', ['browser-sync', global.gulpOptions.prefix + 'watch'], function () {
-  global.gulpOptions.watch = true;
   gulp.watch([config.css.dist], ['cp:css']);
   gulp.watch([config.script.dist], ['cp:script']);
   gulp.watch([config.tpl.dist,], ['cp:tpl']);
@@ -30,7 +28,6 @@ gulp.task('developFSS', ['browser-sync', global.gulpOptions.prefix + 'watch'], f
 
 // developFullStack
 gulp.task('developFS', ['nodemon', global.gulpOptions.prefix + 'watch'], function () {
-  global.gulpOptions.watch = true;
   gulp.watch([config.css.dist], ['cp:css']);
   gulp.watch([config.script.dist], ['cp:script']);
   gulp.watch([config.tpl.dist,], ['cp:tpl']);
