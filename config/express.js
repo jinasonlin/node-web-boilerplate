@@ -1,20 +1,21 @@
 'use strict';
 
 var express = require('express');
-var session = require('express-session');
 var compression = require('compression');
 var morgan = require('morgan');
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var mongoStore = require('connect-mongo/es5')(session);
 var cors = require('cors');
 var csrf = require('csurf');
 var swig = require('swig');
-
-
-var mongoStore = require('connect-mongo/es5')(session);
+var ejs = require('ejs');
+var cons = require('consolidate')
 var flash = require('connect-flash');
 var helpers = require('view-helpers');
+
 var config = require('./config');
 var pkg = require('../package.json');
 
@@ -31,7 +32,7 @@ module.exports = function (app, passport) {
 
   // var multipart = require('connect-multiparty');
   // var multipartMiddleware = multipart();
-  // app.use('/', multipartMiddleware);
+  // app.use(multipartMiddleware);
 
   // Don't log during tests, log with nginx in production
   // Logging middleware
@@ -40,20 +41,13 @@ module.exports = function (app, passport) {
   }
 
   // Swig templating engine settings
-  if (env === 'development' || env === 'test') {
-    swig.setDefaults({
-      cache: false,
-      varControls: ['{=', '=}']
-    });
-  } else {
-    swig.setDefaults({
-      varControls: ['{=', '=}']
-    });
-  }
-  // swig.setDefaultTZOffset((new Date()).getTimezoneOffset());
+  swig.setDefaults({
+    varControls: ['{=', '=}']
+  });
 
   // set views path, template engine and default layout
-  app.engine('html', swig.renderFile);
+  app.engine('html', cons.swig);
+  app.engine('ejs', cons.ejs);
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'html');
 

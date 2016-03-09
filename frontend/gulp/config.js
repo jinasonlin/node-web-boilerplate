@@ -8,7 +8,7 @@ module.exports = {
     files: [ dest ]
   },
   html: {
-    src: src + "/html/views/*.html",
+    src: src + "/html/views/*",
     dest: dest + "/views"
   },
   css: {
@@ -20,11 +20,11 @@ module.exports = {
     dest: dest + "/css"
   },
   script: {
-    src: src + "/js/**/*",
+    src: src + "/js/**/*.js",
     dest: dest + "/js"
   },
   tpl: {
-    src: src + "/html/tpl/*.html",
+    src: src + "/html/tpl/*",
     dest: dest + "/tpl"
   },
   lib: {
