@@ -9,7 +9,7 @@ module.exports = {
     files: [ public, app + "/views" ]
   },
   views: {
-    dist: dist + "/views/*",
+    dist: dist + "/views/**/*",
     public: app + "/views"
   },
   css: {
@@ -21,7 +21,7 @@ module.exports = {
     public: public + "/js"
   },
   tpl: {
-    dist: dist + "/tpl/*",
+    dist: dist + "/tpl/**/*",
     public: public + "/views"
   },
   lib: {
