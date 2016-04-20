@@ -39,6 +39,7 @@ var browserifyTask = function (callback, devMode) {
     var bundle = function () {
       bundleLogger.start(bundleConfig.outputName);
 
+      // TODO rename & uglifyjs
       return b
         .bundle()
         .on('error', handleErrors)
