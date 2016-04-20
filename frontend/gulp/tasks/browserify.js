@@ -8,7 +8,9 @@ var gulp = require('gulp');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var babelify = require('babelify');
-var literalify = require('literalify')
+var literalify = require('literalify');
+var sourcemaps = require('gulp-sourcemaps');
+var uglify = require('gulp-uglify');
 
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -39,15 +41,34 @@ var browserifyTask = function (callback, devMode) {
     var bundle = function () {
       bundleLogger.start(bundleConfig.outputName);
 
-      // TODO rename & uglifyjs
-      return b
+      b = b
         .bundle()
         .on('error', handleErrors)
-        .pipe(source(bundleConfig.outputName))
-        // .pipe(sourcemaps.init({ loadMaps: true }))
-        // .pipe(sourcemaps.write('./'))
+        .pipe(source(bundleConfig.outputName));
+
+      if (!global.gulpOptions.development) {
+        b = b
+          .pipe(buffer())
+          .pipe(sourcemaps.init({ loadMaps: true }))
+          .pipe(uglify())
+          .pipe(sourcemaps.write('./'));
+      }
+
+      return b
         .pipe(gulp.dest(bundleConfig.dest))
         .on('end', reportFinished);
+
+      // // TODO rename & uglifyjs
+      // return b
+      //   .bundle()
+      //   .on('error', handleErrors)
+      //   .pipe(source(bundleConfig.outputName))
+      //   .pipe(buffer())
+      //   .pipe(sourcemaps.init({ loadMaps: true }))
+      //   .pipe(uglify())
+      //   .pipe(sourcemaps.write('./'))
+      //   .pipe(gulp.dest(bundleConfig.dest))
+      //   .on('end', reportFinished);
     };
 
     if (devMode) {
