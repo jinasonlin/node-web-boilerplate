@@ -1,0 +1,12 @@
+{
+  "root": true,
+  "extends": "defaults/configurations/airbnb/es5",
+  "rules": {
+    "no-empty-label": 0,
+    "space-after-keywords": 0,
+    "space-return-throw-case": 0,
+    "comma-dangle": [1, "never"],
+    // "strict": 0
+    "strict": [2, "global"]
+  }
+}

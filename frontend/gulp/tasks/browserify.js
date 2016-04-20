@@ -28,7 +28,7 @@ var browserifyTask = function (callback, devMode) {
   var browserifyThis = function (bundleConfig) {
 
     if (devMode) {
-      bundleConfig = _.assign({debug: true}, bundleConfig, watchify.args);
+      bundleConfig = _.assign({debug: true, fullPaths: true}, bundleConfig, watchify.args);
       bundleConfig = _.omit(bundleConfig, ['external', 'require']);
     }
 
