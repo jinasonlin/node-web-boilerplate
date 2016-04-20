@@ -6,7 +6,13 @@
     "space-after-keywords": 0,
     "space-return-throw-case": 0,
     "comma-dangle": [1, "never"],
-    // "strict": 0
-    "strict": [2, "global"]
+    "strict": [2, "global"],
+    "no-unused-vars": 1,
+    "no-param-reassign": [2, { "props": false }],
+    "vars-on-top": 1,
+    "consistent-return": 1,
+    "no-extend-native": [2, { "exceptions": ["Date"] }],
+    "quote-props": [2, "consistent-as-needed"],
+    "max-len": 1
   }
 }

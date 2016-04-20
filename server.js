@@ -1,5 +1,3 @@
-'use strict';
-
 var fs = require('fs');
 var express = require('express');
 var mongoose = require('mongoose');
@@ -21,7 +19,11 @@ var port = 8081;
 
 // // Connect to mongodb
 // var connect = function () {
-//   var options = {server: {socketOptions: {keepAlive: 1}}, replset: {socketOptions: {keepAlive: 1}}, mongos: true};
+//   var options = {
+//       server: { socketOptions: { keepAlive: 1 } },
+//       replset: { socketOptions: { keepAlive: 1 } },
+//       mongos: true
+//   };
 //   mongoose.connect(config.db, options);
 // };
 // connect();

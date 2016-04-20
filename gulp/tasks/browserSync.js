@@ -1,11 +1,9 @@
-'use strict';
+var config = require('../config');
 
-var config      = require('../config');
-
-var gulp        = require('gulp');
+var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 
-gulp.task('browser-sync', ['nodemon'], function() {
+gulp.task('browser-sync', ['nodemon'], function () {
   global.gulpOptions.watch = true;
   global.gulpOptions.bs = browserSync;
   global.gulpOptions.bsRload = browserSync.reload;
@@ -15,6 +13,6 @@ gulp.task('browser-sync', ['nodemon'], function() {
   });
 });
 
-gulp.task('bs-reload', function() {
+gulp.task('bs-reload', function () {
   browserSync.reload();
 });

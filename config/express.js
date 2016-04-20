@@ -1,5 +1,3 @@
-'use strict';
-
 var express = require('express');
 var compression = require('compression');
 var morgan = require('morgan');
@@ -12,7 +10,7 @@ var cors = require('cors');
 var csrf = require('csurf');
 var swig = require('swig');
 var ejs = require('ejs');
-var cons = require('consolidate')
+var cons = require('consolidate');
 var flash = require('connect-flash');
 var helpers = require('view-helpers');
 
@@ -51,7 +49,7 @@ module.exports = function (app, passport) {
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'html');
 
-  //check isWechatVisit
+  // check isWechatVisit
   app.use(function (req, res, next) {
     var ua = req.headers['user-agent'];
     if (ua && ua.match(/MicroMessenger/i) === 'MicroMessenger') {
@@ -81,8 +79,8 @@ module.exports = function (app, passport) {
   });
 
   // bodyParser should be above methodOverride
-  app.use(bodyParser.json({limit: '50mb'}));
-  app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+  app.use(bodyParser.json({ limit: '50mb' }));
+  app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
   app.use(methodOverride(function (req, res) {
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
       // look in urlencoded POST bodies and delete it

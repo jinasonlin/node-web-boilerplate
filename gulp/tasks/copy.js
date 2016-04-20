@@ -1,5 +1,3 @@
-'use strict';
-
 var config = require('../config');
 
 var gulp = require('gulp');
@@ -82,4 +80,12 @@ gulp.task('cp:lib', function () {
 });
 
 
-gulp.task('cp', gulpSequence(['cp:views', 'cp:css', 'cp:script', 'cp:tpl', 'cp:images', 'cp:media', 'cp:lib']));
+gulp.task('cp', gulpSequence([
+  'cp:views',
+  'cp:css',
+  'cp:script',
+  'cp:tpl',
+  'cp:images',
+  'cp:media',
+  'cp:lib'
+]));

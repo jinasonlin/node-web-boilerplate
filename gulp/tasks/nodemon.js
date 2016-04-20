@@ -1,7 +1,6 @@
+var config = require('../config').nodemon;
 
-var config  = require('../config').nodemon;
-
-var gulp    = require('gulp'); 
+var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 
 gulp.task('nodemon', function (cb) {
@@ -10,8 +9,8 @@ gulp.task('nodemon', function (cb) {
     .on('start', function () {
       if (!started) {
         cb();
-        started = true; 
-      } 
+        started = true;
+      }
     })
     .on('restart', function () {
       console.log('restarted!');
