@@ -58,15 +58,14 @@ var browserifyTask = function (callback, devMode) {
         .pipe(gulp.dest(bundleConfig.dest))
         .on('end', reportFinished);
 
-      // // TODO rename & uglifyjs
       // return b
       //   .bundle()
       //   .on('error', handleErrors)
       //   .pipe(source(bundleConfig.outputName))
-      //   .pipe(buffer())
-      //   .pipe(sourcemaps.init({ loadMaps: true }))
-      //   .pipe(uglify())
-      //   .pipe(sourcemaps.write('./'))
+      //   // .pipe(buffer())
+      //   // .pipe(sourcemaps.init({ loadMaps: true }))
+      //   // .pipe(uglify())
+      //   // .pipe(sourcemaps.write('./'))
       //   .pipe(gulp.dest(bundleConfig.dest))
       //   .on('end', reportFinished);
     };
