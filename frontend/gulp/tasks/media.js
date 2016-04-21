@@ -1,8 +1,7 @@
-'use strict';
 
 var config = require('../config').media;
 
-var gulp   = require('gulp');
+var gulp = require('gulp');
 
 gulp.task(global.gulpOptions.prefix + 'media', function (cb) {
   if (global.gulpOptions.media) {

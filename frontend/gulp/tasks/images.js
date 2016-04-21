@@ -1,8 +1,7 @@
-'use strict';
 
 var config = require('../config').images;
 
-var gulp   = require('gulp');
+var gulp = require('gulp');
 
 gulp.task(global.gulpOptions.prefix + 'images', function (cb) {
   if (global.gulpOptions.images) {

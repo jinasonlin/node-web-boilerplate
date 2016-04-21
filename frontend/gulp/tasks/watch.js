@@ -1,7 +1,7 @@
 
 var config = require('../config');
 
-var gulp   = require('gulp');
+var gulp = require('gulp');
 
 gulp.task(global.gulpOptions.prefix + 'watch', function (cb) {
   gulp.watch(config.html.src, [global.gulpOptions.prefix + 'html']);

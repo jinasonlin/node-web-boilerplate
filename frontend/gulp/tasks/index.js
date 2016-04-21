@@ -1,8 +1,7 @@
-'use strict';
 
 var config = require('../config').nodemon;
 
-var gulp         = require('gulp');
+var gulp = require('gulp');
 var gulpSequence = require('gulp-sequence');
 var nodemon = require('gulp-nodemon');
 var browserSync = require('browser-sync').create();
@@ -21,7 +20,7 @@ gulp.task(global.gulpOptions.prefix + 'build', gulpSequence([
   global.gulpOptions.prefix + 'tpl',
   global.gulpOptions.prefix + 'lib',
   global.gulpOptions.prefix + 'images',
-  global.gulpOptions.prefix + 'media',
+  global.gulpOptions.prefix + 'media'
 ]));
 
 gulp.task(global.gulpOptions.prefix + 'nodemon', function (cb) {
@@ -30,15 +29,15 @@ gulp.task(global.gulpOptions.prefix + 'nodemon', function (cb) {
     .on('start', function () {
       if (!started) {
         cb();
-        started = true; 
-      } 
+        started = true;
+      }
     })
     .on('restart', function () {
       console.log('restarted!');
     });
 });
 
-gulp.task(global.gulpOptions.prefix + 'browser-sync', function() {
+gulp.task(global.gulpOptions.prefix + 'browser-sync', function () {
   global.gulpOptions.watch = true;
   global.gulpOptions.bsFront = browserSync;
   global.gulpOptions.bsFrontRload = browserSync.reload;

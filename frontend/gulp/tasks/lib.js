@@ -1,8 +1,7 @@
-'use strict';
 
 var config = require('../config').lib;
 
-var gulp   = require('gulp');
+var gulp = require('gulp');
 
 gulp.task(global.gulpOptions.prefix + 'lib', function (cb) {
   if (global.gulpOptions.lib) {

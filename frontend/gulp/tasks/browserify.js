@@ -1,4 +1,3 @@
-'use strict';
 
 var config = require('../config').browserify;
 var bundleLogger = require('../util/bundleLogger');
@@ -18,7 +17,6 @@ var buffer = require('vinyl-buffer');
 var _ = require('lodash');
 
 var browserifyTask = function (callback, devMode) {
-
   var bundleQueue = config.bundleConfigs.length;
 
   if (!bundleQueue) {
@@ -26,16 +24,15 @@ var browserifyTask = function (callback, devMode) {
   }
 
   var browserifyThis = function (bundleConfig) {
-
     if (devMode) {
-      bundleConfig = _.assign({debug: true, fullPaths: true}, bundleConfig, watchify.args);
+      bundleConfig = _.assign({ debug: true, fullPaths: true }, bundleConfig, watchify.args);
       bundleConfig = _.omit(bundleConfig, ['external', 'require']);
     }
 
     var b = browserify(bundleConfig).transform(babelify);
 
     if (bundleConfig.literal) {
-      b.transform(literalify.configure(bundleConfig.literal))
+      b.transform(literalify.configure(bundleConfig.literal));
     }
 
     var bundle = function () {

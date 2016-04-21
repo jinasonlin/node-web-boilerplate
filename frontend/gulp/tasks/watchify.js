@@ -1,5 +1,5 @@
 
-var gulp           = require('gulp');
+var gulp = require('gulp');
 var browserifyTask = require('./browserify');
 
 gulp.task(global.gulpOptions.prefix + 'watchify', function (callback) {

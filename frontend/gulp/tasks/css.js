@@ -1,12 +1,11 @@
-'use strict';
 
 var config = require('../config').css;
 
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 var minifyCSS = require('gulp-minify-css');
-var rename    = require('gulp-rename');
-var size      = require('gulp-filesize');
+var rename = require('gulp-rename');
+var size = require('gulp-filesize');
 
 gulp.task(global.gulpOptions.prefix + 'css', function () {
   var src = gulp.src(config.src);

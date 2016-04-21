@@ -1,4 +1,3 @@
-'use strict';
 
 var config = require('../config').script;
 
@@ -6,7 +5,7 @@ var gulp = require('gulp');
 var watch = require('gulp-watch');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
-var size   = require('gulp-filesize');
+var size = require('gulp-filesize');
 
 gulp.task(global.gulpOptions.prefix + 'script', function () {
   var src = gulp.src(config.src);
