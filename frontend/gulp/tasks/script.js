@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var watch = require('gulp-watch');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
-var size = require('gulp-filesize');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task(global.gulpOptions.prefix + 'script', function () {
   var src = gulp.src(config.src);
@@ -16,7 +16,10 @@ gulp.task(global.gulpOptions.prefix + 'script', function () {
     }));
   }
   if (!global.gulpOptions.development) {
-    src = src.pipe(uglify());
+    // src = src.pipe(uglify());
+    src = src.pipe(sourcemaps.init())
+      .pipe(uglify())
+      .pipe(sourcemaps.write('./'));
   }
   if (global.gulpOptions.rename) {
     src = src.pipe(rename({ extname: '.min.js' }));
@@ -25,9 +28,6 @@ gulp.task(global.gulpOptions.prefix + 'script', function () {
   if (global.gulpOptions.bsFront) {
     // src = src.pipe(global.gulpOptions.bsFrontRload({ stream: true }));
     src = src.pipe(global.gulpOptions.bsFront.reload({ stream: true }));
-  }
-  if (!global.gulpOptions.development && !global.gulpOptions.bsFront) {
-    src = src.pipe(size());
   }
   return src;
 });

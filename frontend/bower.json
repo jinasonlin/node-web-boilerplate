@@ -12,7 +12,8 @@
     "react",
     "angular"
   ],
-  "homepage": "https://github.com/jinasonlin/node-web-boilerplate",
+  "homepage": "http://jinasonlin.zh",
+  "repository": "https://github.com/jinasonlin/node-web-boilerplate",
   "moduleType": [],
   "ignore": [
     "**/.*",
