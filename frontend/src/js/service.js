@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('demo', [])
   .service('DemoService', function () {
     var value = 'hello world! by service';

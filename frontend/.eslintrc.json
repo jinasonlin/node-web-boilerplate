@@ -1,0 +1,29 @@
+{
+  "root": true,
+  "extends": ["defaults/configurations/airbnb/es5"],
+  "env": {
+    "browser": true,
+    "node": false,
+    "amd": false,
+    "mocha": false,
+    "jasmine": false
+  },
+  "rules": {
+    "no-empty-label": 0,
+    "space-after-keywords": 0,
+    "space-return-throw-case": 0,
+    "vars-on-top": 0,
+    "func-names": 0,
+    "comma-dangle": [1, "never"],
+    "strict": [2, "global"],
+    "no-unused-vars": 1,
+    "no-param-reassign": [1, { "props": false }],
+    "consistent-return": 1,
+    "no-extend-native": [2, { "exceptions": ["Date"] }],
+    "quote-props": [2, "consistent-as-needed"],
+    "max-len": 1
+  },
+  "globals": {
+    "angular": true
+  }
+}

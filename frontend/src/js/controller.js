@@ -1,7 +1,5 @@
-'use strict';
-
 angular.module('demo')
-  .controller('DemoCtrl', ['$scope', '$timeout', 'DemoService', function($scope, $timeout, DemoService) {
+  .controller('DemoCtrl', ['$scope', '$timeout', 'DemoService', function ($scope, $timeout, DemoService) {
     var vm = $scope.vm = {
       init: function () {
         $timeout(function () {
